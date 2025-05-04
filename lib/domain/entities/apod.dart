@@ -1,27 +1,27 @@
 import 'package:equatable/equatable.dart';
 
 class Apod extends Equatable {
-  String copyright;
-  DateTime date;
-  String explanation;
-  String hdurl;
-  String mediaType;
-  String serviceVersion;
-  String thumbnailUrl;
-  String title;
-  String url;
+  final String? copyright;
+  final DateTime? date;
+  final String? explanation;
+  final String? hdurl;
+  final String? mediaType;
+  final String? serviceVersion;
+  final String? thumbnailUrl;
+  final String? title;
+  final String? url;
 
 
-  Apod({
-    required this.copyright,
-    required this.date,
-    required this.explanation,
-    required this.hdurl,
-    required this.mediaType,
-    required this.serviceVersion,
-    required this.thumbnailUrl,
-    required this.title,
-    required this.url,
+  const Apod({
+    this.copyright,
+    this.date,
+    this.explanation,
+    this.hdurl,
+    this.mediaType,
+    this.serviceVersion,
+    this.thumbnailUrl,
+    this.title,
+    this.url,
   });
   
   @override
