@@ -11,3 +11,8 @@ class NoConnection extends Failure {
   @override
   String get msg => "No connected with internet! Please, check your connection!";
 }
+
+class ApiFailure extends Failure{
+  @override
+  String get msg => "Fail to connect with API!";
+}
