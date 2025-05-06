@@ -30,7 +30,7 @@ void main() {
       );
 
       // action
-      final result = datasource.fetchTodayApod();
+      final result = await datasource.fetchTodayApod();
 
       // expected
       expect(result, testApodModel);
