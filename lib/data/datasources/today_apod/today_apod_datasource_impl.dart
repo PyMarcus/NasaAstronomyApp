@@ -4,6 +4,7 @@ import 'package:nasa_astronomy_app/core/failure.dart';
 import 'package:nasa_astronomy_app/data/datasources/today_apod/today_apod_datasource.dart';
 import 'package:nasa_astronomy_app/data/models/apod_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:nasa_astronomy_app/enviroment.dart';
 
 class TodayApodDatasourceImpl implements TodayApodDatasource {
   final http.Client client;
@@ -15,7 +16,7 @@ class TodayApodDatasourceImpl implements TodayApodDatasource {
     http.Response response;
 
     try {
-      response = await client.get(Uri.parse("url"));
+      response = await client.get(Uri.parse(Enviroment.urlBase));
     } catch (e) {
       throw ApiFailure();
     }
