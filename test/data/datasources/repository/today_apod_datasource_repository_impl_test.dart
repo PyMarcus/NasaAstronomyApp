@@ -9,7 +9,7 @@ import 'package:nasa_astronomy_app/data/repositories/today_apod/today_apod_repos
 import 'package:nasa_astronomy_app/domain/entities/apod.dart';
 
 import '../../../test_values.dart';
-import 'today_apod_datasource_impl_test.mocks.dart';
+import 'today_apod_datasource_repository_impl_test.mocks.dart';
 
 @GenerateNiceMocks([
   MockSpec<TodayApodDatasource>(),
