@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:nasa_astronomy_app/domain/entities/apod.dart';
+import 'package:nasa_astronomy_app/domain/usecases/core/usecase.dart';
 import 'package:nasa_astronomy_app/domain/usecases/today_apod/fetch_apod_usecase.dart';
 
 part 'today_apod_event.dart';
@@ -12,7 +13,7 @@ class TodayApodBloc {
 
   TodayApodBloc({required this.fetchApodUsecase}) {
     // escuta eventos de entrada e aciona blockeeventcontroller.
-    _inputController.stream.listen(_blockEventController); 
+    _inputController.stream.listen(_blockEventController);
   }
 
   final StreamController<TodayApodEvent> _inputController =
@@ -23,5 +24,15 @@ class TodayApodBloc {
   Sink<TodayApodEvent> get input => _inputController.sink; // entrada
   Stream<TodayApodState> get stream => _outputController.stream; // saida
 
-  void _blockEventController(TodayApodEvent event) {}
+  void _blockEventController(TodayApodEvent event) {
+    _outputController.add(LoadingTodayApodState());
+
+    if (event is FetchTodayApodEvent) {
+      fetchApodUsecase(NoParameter())
+      .then((value)=> value
+      .fold(
+        (left)=> _outputController.add(ErrorTodayApodState(msg: left.msg)),
+        (right)=> _outputController.add(SuccessTodayApodState(apod: right))));
+    }
+  }
 }
